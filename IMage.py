@@ -1,39 +1,39 @@
-import Pygame
+import pygame
 
-Pygame.init()
+pygame.init()
 
 SCREEN_WIDTH, SCREEN_HEIGHT = 500, 500
 
-display_surface = Pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
-Pygame.display.set_caption('Adding image and background image')
+display_surface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+pygame.display.set_caption('CR7')
 
-background_image = Pygame.transform.scale(
-    Pygame.image.load('all-white-background.jpg').convert(),
+background_image = pygame.transform.scale(
+    pygame.image.load('white.png').convert(),
     (SCREEN_WIDTH, SCREEN_HEIGHT))
 
-penguin_image = Pygame.transform.scale(
-    Pygame.image.load('lambo.jfif').convert_alpha(), (200.200))
+penguin_image = pygame.transform.scale(
+    pygame.image.load('lambo.jfif').convert_alpha(), (200, 200))
 penguin_rect = penguin_image.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 30 ))
 
-text = Pygame.font.Font(None, 36).render('Hello World', True, Pygame.Color('black'))
+text = pygame.font.Font(None, 36).render('Hello World', True, pygame.Color('black'))
 text_rect = text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 110))
 
 def game_loop():
-    clock = Pygame.time.Clock()
+    clock = pygame.time.Clock()
     running = True
     while running:
-        for event in Pygame.event.get():
-            if event.type == Pygame.QUIT:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
                 running = False
 
         display_surface.blit(background_image, (0, 0))
         display_surface.blit(penguin_image, penguin_rect)
 
-        Pygame.display.flip()
+        pygame.display.flip()
 
         clock.tick(30)
 
-    Pygame.quit()
+    pygame.quit()
 
 if __name__ == '__main__':
     game_loop()
